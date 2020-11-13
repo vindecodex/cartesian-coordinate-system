@@ -5,23 +5,30 @@ const Form = ({ datas, setDatas, t }) => {
 	const [x,setX] = useState(0);
 	const [y, setY] = useState(0);
 	const [logo, setLogo] = useState("");
+	const [highestX, setHighestX] = useState(0);
+	const [highestY, setHighestY] = useState(0);
 
 	const onChangeX = (e) => {
-		setX(Number(e.target.value));
+		const val = e.target.value;
+		setX(Number(val));
+		if (val > highestX) setHighestX(val);
 	}
 	const onChangeY = (e) => {
-		setY(Number(e.target.value));
+		const val = e.target.value;
+		setY(Number(val));
+		if (val > highestY) setHighestY(val);
 	}
 	const onChangeLogo = (e) => {
 		setLogo(e.target.value);
 	}
 	const onClick = () => {
+		if (!x || !y || !logo) return;
 		setDatas([...datas,
 			{logo,x,y}
 		])
 		setLogo("");
-		t.setXTotal(t.xTotal + x);
-		t.setYTotal(t.yTotal + y);
+		t.setXTotal(highestX);
+		t.setYTotal(highestY);
 		setX(0);
 		setY(0);
 	}
@@ -31,6 +38,8 @@ const Form = ({ datas, setDatas, t }) => {
 			<input onChange={(e) => onChangeX(e)} value={x} type="text" placeholder="x value" /><br />
 			<input onChange={(e) => onChangeY(e)} value={y} type="text" placeholder="y value" /><br />
 			<input onClick={() => onClick()}type="submit" value="submit" /><br />
+			<h1>x - {t.xTotal}</h1>
+			<h1>y - {t.yTotal}</h1>
 		</div>
 	)
 }
