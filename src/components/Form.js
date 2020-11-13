@@ -38,8 +38,6 @@ const Form = ({ datas, setDatas, t }) => {
 			<input onChange={(e) => onChangeX(e)} value={x} type="text" placeholder="x value" /><br />
 			<input onChange={(e) => onChangeY(e)} value={y} type="text" placeholder="y value" /><br />
 			<input onClick={() => onClick()}type="submit" value="submit" /><br />
-			<h1>x - {t.xTotal}</h1>
-			<h1>y - {t.yTotal}</h1>
 		</div>
 	)
 }
