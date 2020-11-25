@@ -10,12 +10,12 @@ const Form = ({ datas, setDatas, t }) => {
 
 	const onChangeX = (e) => {
 		const val = e.target.value;
-		setX(Number(val));
+		setX((Number(val)) - ((Number(val)) * 0.15));
 		if (val > highestX) setHighestX(val);
 	}
 	const onChangeY = (e) => {
 		const val = e.target.value;
-		setY(Number(val));
+		setY((Number(val)) - ((Number(val)) * 0.15));
 		if (val > highestY) setHighestY(val);
 	}
 	const onChangeLogo = (e) => {
