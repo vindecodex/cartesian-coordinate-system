@@ -24,7 +24,11 @@ const Form = ({ datas, setDatas, t }) => {
 	const onClick = () => {
 		if (!x || !y || !logo) return;
 		setDatas([...datas,
-			{logo,x,y}
+			{
+				logo,
+				x: (x - (x * 0.15)),
+				y: (y - (y * 0.15))
+			}
 		])
 		setLogo("");
 		t.setXTotal(highestX);
